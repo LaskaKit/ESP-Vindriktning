@@ -15010,8 +15010,8 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <part name="+3V2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="+3V3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND11" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="R13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="10k"/>
-<part name="R12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="10k"/>
+<part name="R13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="10k"/>
+<part name="R12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="10k"/>
 <part name="+3V1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -15024,24 +15024,24 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <part name="RED2" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0603" package3d_urn="urn:adsk.eagle:package:15819/3" value="RED"/>
 <part name="YELLOW2" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0603" package3d_urn="urn:adsk.eagle:package:15819/3" value="YELLOW"/>
 <part name="YELLOW1" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0603" package3d_urn="urn:adsk.eagle:package:15819/3" value="YELLOW"/>
-<part name="R15" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="330"/>
-<part name="R16" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="330"/>
+<part name="R15" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="330"/>
+<part name="R16" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="330"/>
 <part name="GREEN1" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0603" package3d_urn="urn:adsk.eagle:package:15819/3" value="GREEN"/>
 <part name="GREEN2" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIP-LED0603" package3d_urn="urn:adsk.eagle:package:15819/3" value="GREEN"/>
-<part name="R17" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="330"/>
+<part name="R17" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="330"/>
 <part name="J1" library="LasKKit-Connectors" library_urn="urn:adsk.eagle:library:21740355" deviceset="USB-C_DONLY" device="918-418K2022Y40000" package3d_urn="urn:adsk.eagle:package:30651119/5"/>
 <part name="GND13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="IC3" library="LasKKit-IC" library_urn="urn:adsk.eagle:library:18780690" deviceset="USB_UART_CONVERTOR_CH340G" device="" package3d_urn="urn:adsk.eagle:package:18824204/3" value="CH340C"/>
 <part name="GND17" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="R18" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="470"/>
-<part name="R19" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="470"/>
+<part name="R18" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="470"/>
+<part name="R19" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="470"/>
 <part name="C15" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100n"/>
 <part name="C17" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="10μF"/>
 <part name="GND18" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="R20" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="330"/>
-<part name="R21" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="330"/>
-<part name="R22" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0402" package3d_urn="urn:adsk.eagle:package:23547/3" value="330"/>
+<part name="R20" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="330"/>
+<part name="R21" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="330"/>
+<part name="R22" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="330"/>
 <part name="D3" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="DIODE-" device="SOD323-R" package3d_urn="urn:adsk.eagle:package:43437/1" value="1N5819WS"/>
 <part name="FAN" library="LasKKit-Connectors" library_urn="urn:adsk.eagle:library:21740355" deviceset="1.25" device="-2P" package3d_urn="urn:adsk.eagle:package:30689875/1"/>
 <part name="SENSOR" library="LasKKit-Connectors" library_urn="urn:adsk.eagle:library:21740355" deviceset="A1501WV-S" device="-4P" package3d_urn="urn:adsk.eagle:package:30690366/1"/>
@@ -15060,9 +15060,6 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <part name="P+3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="+3V6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="+3V7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
-<part name="I2C" library="LasKKit-Connectors" library_urn="urn:adsk.eagle:library:21740355" deviceset="JST-PH-4" device="" package3d_urn="urn:adsk.eagle:package:21740529/2">
-<attribute name="LCSC_PART" value="C2321"/>
-</part>
 <part name="+3V8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="C6" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100nF"/>
@@ -15094,6 +15091,9 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <part name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0402" package3d_urn="urn:adsk.eagle:package:23626/2" value="20p"/>
 <part name="C2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0402" package3d_urn="urn:adsk.eagle:package:23626/2" value="20p"/>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="I2C" library="LasKKit-Connectors" library_urn="urn:adsk.eagle:library:21740355" deviceset="JST-PH-4" device="" package3d_urn="urn:adsk.eagle:package:21740529/2">
+<attribute name="LCSC_PART" value="C2321"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -15325,11 +15325,6 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <instance part="+3V7" gate="G$1" x="141.9225" y="37.465" smashed="yes">
 <attribute name="VALUE" x="144.145" y="40.005" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="I2C" gate="G$1" x="182.245" y="140.335" smashed="yes">
-<attribute name="NAME" x="180.975" y="148.59" size="1.778" layer="95"/>
-<attribute name="VALUE" x="180.975" y="132.715" size="1.778" layer="95"/>
-<attribute name="LCSC_PART" x="182.245" y="140.335" size="1.778" layer="96" display="off"/>
-</instance>
 <instance part="+3V8" gate="G$1" x="20.32" y="157.48" smashed="yes">
 <attribute name="VALUE" x="17.145" y="158.115" size="1.778" layer="96"/>
 </instance>
@@ -15426,6 +15421,11 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <instance part="GND6" gate="1" x="73.66" y="7.3025" smashed="yes">
 <attribute name="VALUE" x="71.12" y="4.7625" size="1.778" layer="96"/>
 </instance>
+<instance part="I2C" gate="G$1" x="181.61" y="142.875" smashed="yes" rot="MR180">
+<attribute name="NAME" x="180.34" y="134.62" size="1.778" layer="95" rot="MR180"/>
+<attribute name="VALUE" x="180.34" y="150.495" size="1.778" layer="95" rot="MR180"/>
+<attribute name="LCSC_PART" x="181.61" y="142.875" size="1.778" layer="96" rot="MR180" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -15444,8 +15444,10 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <segment>
 <pinref part="GND11" gate="1" pin="GND"/>
 <wire x1="169.545" y1="132.715" x2="169.545" y2="145.415" width="0.1524" layer="91"/>
-<wire x1="177.165" y1="145.415" x2="169.545" y2="145.415" width="0.1524" layer="91"/>
-<pinref part="I2C" gate="G$1" pin="1"/>
+<wire x1="177.165" y1="145.415" x2="176.53" y2="145.415" width="0.1524" layer="91"/>
+<pinref part="I2C" gate="G$1" pin="4"/>
+<wire x1="176.53" y1="145.415" x2="169.545" y2="145.415" width="0.1524" layer="91"/>
+<junction x="176.53" y="145.415"/>
 </segment>
 <segment>
 <pinref part="C3" gate="G$1" pin="2"/>
@@ -15605,8 +15607,10 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <wire x1="159.385" y1="153.035" x2="167.005" y2="153.035" width="0.1524" layer="91"/>
 <junction x="159.385" y="153.035"/>
 <junction x="167.005" y="153.035"/>
-<wire x1="177.165" y1="142.875" x2="167.005" y2="142.875" width="0.1524" layer="91"/>
-<pinref part="I2C" gate="G$1" pin="2"/>
+<wire x1="177.165" y1="142.875" x2="176.53" y2="142.875" width="0.1524" layer="91"/>
+<pinref part="I2C" gate="G$1" pin="3"/>
+<wire x1="176.53" y1="142.875" x2="167.005" y2="142.875" width="0.1524" layer="91"/>
+<junction x="176.53" y="142.875"/>
 </segment>
 <segment>
 <pinref part="+3V1" gate="G$1" pin="+3V3"/>
@@ -15869,13 +15873,12 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <label x="226.06" y="66.3575" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="TX_" class="0">
+<net name="TX" class="0">
 <segment>
-<pinref part="IC1" gate="A" pin="A2"/>
 <pinref part="SENSOR" gate="A" pin="1"/>
-<wire x1="182.88" y1="58.42" x2="177.8" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="197.8025" y1="60.96" x2="185.42" y2="60.96" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="58.42" x2="185.42" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="197.8025" y1="60.96" x2="177.8" y2="60.96" width="0.1524" layer="91"/>
+<label x="189.865" y="61.2775" size="1.778" layer="95"/>
+<pinref part="IC1" gate="A" pin="A1"/>
 </segment>
 </net>
 <net name="SENSOR_VP" class="0">
@@ -15993,9 +15996,11 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <pinref part="R13" gate="G$1" pin="1"/>
 <wire x1="156.845" y1="140.335" x2="144.145" y2="140.335" width="0.1524" layer="91"/>
 <wire x1="156.845" y1="142.875" x2="156.845" y2="140.335" width="0.1524" layer="91"/>
-<wire x1="177.165" y1="140.335" x2="156.845" y2="140.335" width="0.1524" layer="91"/>
+<wire x1="177.165" y1="140.335" x2="176.53" y2="140.335" width="0.1524" layer="91"/>
 <junction x="156.845" y="140.335"/>
-<pinref part="I2C" gate="G$1" pin="3"/>
+<pinref part="I2C" gate="G$1" pin="2"/>
+<wire x1="176.53" y1="140.335" x2="156.845" y2="140.335" width="0.1524" layer="91"/>
+<junction x="176.53" y="140.335"/>
 </segment>
 </net>
 <net name="TXD0" class="0">
@@ -16033,9 +16038,11 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <pinref part="R12" gate="G$1" pin="1"/>
 <wire x1="159.385" y1="137.795" x2="144.145" y2="137.795" width="0.1524" layer="91"/>
 <wire x1="159.385" y1="142.875" x2="159.385" y2="137.795" width="0.1524" layer="91"/>
-<wire x1="177.165" y1="137.795" x2="159.385" y2="137.795" width="0.1524" layer="91"/>
+<wire x1="177.165" y1="137.795" x2="176.53" y2="137.795" width="0.1524" layer="91"/>
 <junction x="159.385" y="137.795"/>
-<pinref part="I2C" gate="G$1" pin="4"/>
+<pinref part="I2C" gate="G$1" pin="1"/>
+<wire x1="176.53" y1="137.795" x2="159.385" y2="137.795" width="0.1524" layer="91"/>
+<junction x="176.53" y="137.795"/>
 </segment>
 </net>
 <net name="IO19" class="0">
@@ -16059,7 +16066,7 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <label x="111.76" y="129.54" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="IO17" class="0">
+<net name="TX2" class="0">
 <segment>
 <wire x1="116.84" y1="127" x2="101.6" y2="127" width="0.1524" layer="91"/>
 <pinref part="ESP32" gate="G$1" pin="IO17"/>
@@ -16071,7 +16078,7 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <pinref part="IC1" gate="A" pin="B2"/>
 </segment>
 </net>
-<net name="IO16" class="0">
+<net name="RX2" class="0">
 <segment>
 <wire x1="116.84" y1="124.46" x2="101.6" y2="124.46" width="0.1524" layer="91"/>
 <pinref part="ESP32" gate="G$1" pin="IO16"/>
@@ -16170,16 +16177,15 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <junction x="213.36" y="86.6775"/>
 </segment>
 </net>
-<net name="RX_" class="0">
+<net name="RX" class="0">
 <segment>
-<pinref part="IC1" gate="A" pin="A1"/>
-<wire x1="182.88" y1="60.96" x2="177.8" y2="60.96" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="60.96" x2="185.42" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="SENSOR" gate="A" pin="2"/>
-<wire x1="197.8025" y1="58.42" x2="185.42" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="197.8025" y1="58.42" x2="177.8" y2="58.42" width="0.1524" layer="91"/>
+<label x="189.865" y="58.7375" size="1.778" layer="95"/>
+<pinref part="IC1" gate="A" pin="A2"/>
 </segment>
 </net>
-<net name="N$7" class="0">
+<net name="G" class="0">
 <segment>
 <pinref part="R17" gate="G$1" pin="2"/>
 <pinref part="R20" gate="G$1" pin="2"/>
@@ -16188,7 +16194,7 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <junction x="225.7425" y="163.83"/>
 </segment>
 </net>
-<net name="N$5" class="0">
+<net name="R" class="0">
 <segment>
 <pinref part="R15" gate="G$1" pin="2"/>
 <pinref part="R22" gate="G$1" pin="2"/>
@@ -16197,7 +16203,7 @@ Created 2016-06-07, Hans Locher&lt;br&gt;
 <junction x="225.7425" y="123.825"/>
 </segment>
 </net>
-<net name="N$6" class="0">
+<net name="Y" class="0">
 <segment>
 <pinref part="R16" gate="G$1" pin="1"/>
 <pinref part="R21" gate="G$1" pin="1"/>
