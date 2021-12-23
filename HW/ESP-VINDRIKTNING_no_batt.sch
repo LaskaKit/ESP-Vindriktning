@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="25" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -8144,8 +8144,7 @@ Source: AVX .. aphvc.pdf</description>
 </packages>
 <packages3d>
 <package3d name="TS1088R02026" urn="urn:adsk.eagle:package:18780932/2" type="model" library_version="33">
-<description>&lt;b&gt;TS-1088R-02026-1&lt;/b&gt;&lt;br&gt;
-</description>
+<description>&lt;b&gt;TS-1088R-02026-1&lt;/b&gt;&lt;br&gt;</description>
 <packageinstances>
 <packageinstance name="TS1088R02026"/>
 </packageinstances>
@@ -8206,7 +8205,7 @@ Source: &lt;a href="https://datasheet.lcsc.com/szlcsc/1912111437_XUNPU-TS-1088R-
 <library name="LasKKit-Connectors" urn="urn:adsk.eagle:library:21740355">
 <description>LasKKIT konektory, pinové lišty</description>
 <packages>
-<package name="USB-C-TH" urn="urn:adsk.eagle:footprint:30651118/5" library_version="63">
+<package name="USB-C-TH" urn="urn:adsk.eagle:footprint:30651118/5" locally_modified="yes" library_version="90" library_locally_modified="yes">
 <pad name="SH3" x="-2" y="1.93" drill="0.5" diameter="1" shape="long"/>
 <pad name="SH4" x="2" y="1.93" drill="0.5" diameter="1" shape="long"/>
 <pad name="SH2" x="2" y="-1.93" drill="0.5" diameter="1" shape="long"/>
@@ -8225,22 +8224,22 @@ Source: &lt;a href="https://datasheet.lcsc.com/szlcsc/1912111437_XUNPU-TS-1088R-
 <pad name="D2+" x="0.45" y="-0.7" drill="0.5" diameter="0.76"/>
 <pad name="D1-" x="0.45" y="0.7" drill="0.5" diameter="0.76"/>
 <pad name="D1+" x="-0.45" y="0.7" drill="0.5" diameter="0.76"/>
-<wire x1="-2.425" y1="2.255" x2="-1.575" y2="2.255" width="0" layer="20"/>
-<wire x1="-1.575" y1="1.605" x2="-2.425" y2="1.605" width="0" layer="20"/>
-<wire x1="-2.425" y1="1.605" x2="-2.425" y2="2.255" width="0" layer="20" curve="-180"/>
-<wire x1="-1.575" y1="2.255" x2="-1.575" y2="1.605" width="0" layer="20" curve="-180"/>
-<wire x1="1.575" y1="2.255" x2="2.425" y2="2.255" width="0" layer="20"/>
-<wire x1="2.425" y1="1.605" x2="1.575" y2="1.605" width="0" layer="20"/>
-<wire x1="1.575" y1="1.605" x2="1.575" y2="2.255" width="0" layer="20" curve="-180"/>
-<wire x1="2.425" y1="2.255" x2="2.425" y2="1.605" width="0" layer="20" curve="-180"/>
-<wire x1="1.575" y1="-1.605" x2="2.425" y2="-1.605" width="0" layer="20"/>
-<wire x1="2.425" y1="-2.255" x2="1.575" y2="-2.255" width="0" layer="20"/>
-<wire x1="1.575" y1="-2.255" x2="1.575" y2="-1.605" width="0" layer="20" curve="-180"/>
-<wire x1="2.425" y1="-1.605" x2="2.425" y2="-2.255" width="0" layer="20" curve="-180"/>
-<wire x1="-2.425" y1="-1.605" x2="-1.575" y2="-1.605" width="0" layer="20"/>
-<wire x1="-1.575" y1="-2.255" x2="-2.425" y2="-2.255" width="0" layer="20"/>
-<wire x1="-2.425" y1="-2.255" x2="-2.425" y2="-1.605" width="0" layer="20" curve="-180"/>
-<wire x1="-1.575" y1="-1.605" x2="-1.575" y2="-2.255" width="0" layer="20" curve="-180"/>
+<wire x1="-2.425" y1="2.255" x2="-1.575" y2="2.255" width="0" layer="46"/>
+<wire x1="-1.575" y1="1.605" x2="-2.425" y2="1.605" width="0" layer="46"/>
+<wire x1="-2.425" y1="1.605" x2="-2.425" y2="2.255" width="0" layer="46" curve="-180"/>
+<wire x1="-1.575" y1="2.255" x2="-1.575" y2="1.605" width="0" layer="46" curve="-180"/>
+<wire x1="1.575" y1="2.255" x2="2.425" y2="2.255" width="0" layer="46"/>
+<wire x1="2.425" y1="1.605" x2="1.575" y2="1.605" width="0" layer="46"/>
+<wire x1="1.575" y1="1.605" x2="1.575" y2="2.255" width="0" layer="46" curve="-180"/>
+<wire x1="2.425" y1="2.255" x2="2.425" y2="1.605" width="0" layer="46" curve="-180"/>
+<wire x1="1.575" y1="-1.605" x2="2.425" y2="-1.605" width="0" layer="46"/>
+<wire x1="2.425" y1="-2.255" x2="1.575" y2="-2.255" width="0" layer="46"/>
+<wire x1="1.575" y1="-2.255" x2="1.575" y2="-1.605" width="0" layer="46" curve="-180"/>
+<wire x1="2.425" y1="-1.605" x2="2.425" y2="-2.255" width="0" layer="46" curve="-180"/>
+<wire x1="-2.425" y1="-1.605" x2="-1.575" y2="-1.605" width="0" layer="46"/>
+<wire x1="-1.575" y1="-2.255" x2="-2.425" y2="-2.255" width="0" layer="46"/>
+<wire x1="-2.425" y1="-2.255" x2="-2.425" y2="-1.605" width="0" layer="46" curve="-180"/>
+<wire x1="-1.575" y1="-1.605" x2="-1.575" y2="-2.255" width="0" layer="46" curve="-180"/>
 <wire x1="-4.47" y1="-0.93" x2="-4.47" y2="0.93" width="0.127" layer="21"/>
 <wire x1="-3.82" y1="1.58" x2="3.82" y2="1.58" width="0.127" layer="21"/>
 <wire x1="4.47" y1="0.93" x2="4.47" y2="-0.93" width="0.127" layer="21"/>
@@ -8380,7 +8379,7 @@ Source: &lt;a href="https://datasheet.lcsc.com/szlcsc/1912111437_XUNPU-TS-1088R-
 </package>
 </packages>
 <packages3d>
-<package3d name="USB-C-TH" urn="urn:adsk.eagle:package:30651119/5" type="box" library_version="63">
+<package3d name="USB-C-TH" urn="urn:adsk.eagle:package:30651119/5" type="box" library_version="90" library_locally_modified="yes">
 <packageinstances>
 <packageinstance name="USB-C-TH"/>
 </packageinstances>
@@ -8473,7 +8472,7 @@ Source: &lt;a href="https://datasheet.lcsc.com/szlcsc/1912111437_XUNPU-TS-1088R-
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="USB-C_DONLY" urn="urn:adsk.eagle:component:30651736/4" prefix="J" library_version="63">
+<deviceset name="USB-C_DONLY" urn="urn:adsk.eagle:component:30651736/4" prefix="J" library_version="90" library_locally_modified="yes">
 <gates>
 <gate name="A" symbol="USB-C_DONLY" x="0" y="0"/>
 </gates>
@@ -8744,7 +8743,7 @@ Source: &lt;a href="https://datasheet.lcsc.com/szlcsc/1912111437_XUNPU-TS-1088R-
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="ESP32-WROOM-32D" urn="urn:adsk.eagle:component:28305009/7" prefix="ANT" library_version="27">
+<deviceset name="ESP32-WROOM-32D" urn="urn:adsk.eagle:component:28305009/8" prefix="ANT" library_version="33">
 <description>&lt;b&gt;WiFi Modules (802.11) SMD Module, ESP32-D0WD, 32Mbits SPI flash, UART mode, PCB antenna&lt;/b&gt;&lt;p&gt;
 Source: &lt;a href="https://www.mouser.com/datasheet/2/891/esp32-wroom-32d_esp32-wroom-32u_datasheet_en-1365844.pdf"&gt; Datasheet &lt;/a&gt;</description>
 <gates>
@@ -8798,14 +8797,7 @@ Source: &lt;a href="https://www.mouser.com/datasheet/2/891/esp32-wroom-32d_esp32
 </package3dinstances>
 <technologies>
 <technology name="">
-<attribute name="ARROW_PART_NUMBER" value="" constant="no"/>
-<attribute name="ARROW_PRICE-STOCK" value="" constant="no"/>
-<attribute name="DESCRIPTION" value="WiFi Modules (802.11) SMD Module, ESP32-D0WD, 32Mbits SPI flash, UART mode, PCB antenna" constant="no"/>
-<attribute name="HEIGHT" value="3.1mm" constant="no"/>
-<attribute name="MANUFACTURER_NAME" value="Espressif Systems" constant="no"/>
-<attribute name="MANUFACTURER_PART_NUMBER" value="ESP32-WROOM-32D" constant="no"/>
-<attribute name="MOUSER_PART_NUMBER" value="N/A" constant="no"/>
-<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Espressif-Systems/ESP32-WROOM-32D?qs=MLItCLRbWszx2KabkKPu5A%3D%3D" constant="no"/>
+<attribute name="LCSC_PART" value="C82899" constant="no"/>
 </technology>
 </technologies>
 </device>

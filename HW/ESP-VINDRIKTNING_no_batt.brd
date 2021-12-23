@@ -164,9 +164,9 @@
 </layers>
 <board>
 <plain>
-<wire x1="-6.75" y1="-1" x2="6.75" y2="-1" width="0" layer="20"/>
-<wire x1="6.75" y1="-1" x2="6.75" y2="2.25" width="0" layer="20"/>
-<wire x1="-6.75" y1="2.25" x2="-6.75" y2="-1" width="0" layer="20"/>
+<wire x1="-6.75" y1="-0.3" x2="6.75" y2="-0.3" width="0" layer="20"/>
+<wire x1="6.75" y1="-0.3" x2="6.75" y2="2.25" width="0" layer="20"/>
+<wire x1="-6.75" y1="2.25" x2="-6.75" y2="-0.3" width="0" layer="20"/>
 <wire x1="-7.75" y1="3.25" x2="-10" y2="3.25" width="0" layer="20"/>
 <wire x1="7.75" y1="3.25" x2="10" y2="3.25" width="0" layer="20"/>
 <wire x1="-10" y1="74.6" x2="15" y2="74.6" width="0" layer="20"/>
@@ -200,7 +200,7 @@
 <library name="LasKKit-Connectors" urn="urn:adsk.eagle:library:21740355">
 <description>LasKKIT konektory, pinové lišty</description>
 <packages>
-<package name="USB-C-TH" urn="urn:adsk.eagle:footprint:30651118/5" library_version="63">
+<package name="USB-C-TH" urn="urn:adsk.eagle:footprint:30651118/5" locally_modified="yes" library_version="90" library_locally_modified="yes">
 <pad name="SH3" x="-2" y="1.93" drill="0.5" diameter="1" shape="long"/>
 <pad name="SH4" x="2" y="1.93" drill="0.5" diameter="1" shape="long"/>
 <pad name="SH2" x="2" y="-1.93" drill="0.5" diameter="1" shape="long"/>
@@ -219,22 +219,22 @@
 <pad name="D2+" x="0.45" y="-0.7" drill="0.5" diameter="0.76"/>
 <pad name="D1-" x="0.45" y="0.7" drill="0.5" diameter="0.76"/>
 <pad name="D1+" x="-0.45" y="0.7" drill="0.5" diameter="0.76"/>
-<wire x1="-2.425" y1="2.255" x2="-1.575" y2="2.255" width="0" layer="20"/>
-<wire x1="-1.575" y1="1.605" x2="-2.425" y2="1.605" width="0" layer="20"/>
-<wire x1="-2.425" y1="1.605" x2="-2.425" y2="2.255" width="0" layer="20" curve="-180"/>
-<wire x1="-1.575" y1="2.255" x2="-1.575" y2="1.605" width="0" layer="20" curve="-180"/>
-<wire x1="1.575" y1="2.255" x2="2.425" y2="2.255" width="0" layer="20"/>
-<wire x1="2.425" y1="1.605" x2="1.575" y2="1.605" width="0" layer="20"/>
-<wire x1="1.575" y1="1.605" x2="1.575" y2="2.255" width="0" layer="20" curve="-180"/>
-<wire x1="2.425" y1="2.255" x2="2.425" y2="1.605" width="0" layer="20" curve="-180"/>
-<wire x1="1.575" y1="-1.605" x2="2.425" y2="-1.605" width="0" layer="20"/>
-<wire x1="2.425" y1="-2.255" x2="1.575" y2="-2.255" width="0" layer="20"/>
-<wire x1="1.575" y1="-2.255" x2="1.575" y2="-1.605" width="0" layer="20" curve="-180"/>
-<wire x1="2.425" y1="-1.605" x2="2.425" y2="-2.255" width="0" layer="20" curve="-180"/>
-<wire x1="-2.425" y1="-1.605" x2="-1.575" y2="-1.605" width="0" layer="20"/>
-<wire x1="-1.575" y1="-2.255" x2="-2.425" y2="-2.255" width="0" layer="20"/>
-<wire x1="-2.425" y1="-2.255" x2="-2.425" y2="-1.605" width="0" layer="20" curve="-180"/>
-<wire x1="-1.575" y1="-1.605" x2="-1.575" y2="-2.255" width="0" layer="20" curve="-180"/>
+<wire x1="-2.425" y1="2.255" x2="-1.575" y2="2.255" width="0" layer="46"/>
+<wire x1="-1.575" y1="1.605" x2="-2.425" y2="1.605" width="0" layer="46"/>
+<wire x1="-2.425" y1="1.605" x2="-2.425" y2="2.255" width="0" layer="46" curve="-180"/>
+<wire x1="-1.575" y1="2.255" x2="-1.575" y2="1.605" width="0" layer="46" curve="-180"/>
+<wire x1="1.575" y1="2.255" x2="2.425" y2="2.255" width="0" layer="46"/>
+<wire x1="2.425" y1="1.605" x2="1.575" y2="1.605" width="0" layer="46"/>
+<wire x1="1.575" y1="1.605" x2="1.575" y2="2.255" width="0" layer="46" curve="-180"/>
+<wire x1="2.425" y1="2.255" x2="2.425" y2="1.605" width="0" layer="46" curve="-180"/>
+<wire x1="1.575" y1="-1.605" x2="2.425" y2="-1.605" width="0" layer="46"/>
+<wire x1="2.425" y1="-2.255" x2="1.575" y2="-2.255" width="0" layer="46"/>
+<wire x1="1.575" y1="-2.255" x2="1.575" y2="-1.605" width="0" layer="46" curve="-180"/>
+<wire x1="2.425" y1="-1.605" x2="2.425" y2="-2.255" width="0" layer="46" curve="-180"/>
+<wire x1="-2.425" y1="-1.605" x2="-1.575" y2="-1.605" width="0" layer="46"/>
+<wire x1="-1.575" y1="-2.255" x2="-2.425" y2="-2.255" width="0" layer="46"/>
+<wire x1="-2.425" y1="-2.255" x2="-2.425" y2="-1.605" width="0" layer="46" curve="-180"/>
+<wire x1="-1.575" y1="-1.605" x2="-1.575" y2="-2.255" width="0" layer="46" curve="-180"/>
 <wire x1="-4.47" y1="-0.93" x2="-4.47" y2="0.93" width="0.127" layer="21"/>
 <wire x1="-3.82" y1="1.58" x2="3.82" y2="1.58" width="0.127" layer="21"/>
 <wire x1="4.47" y1="0.93" x2="4.47" y2="-0.93" width="0.127" layer="21"/>
@@ -316,7 +316,7 @@
 </package>
 </packages>
 <packages3d>
-<package3d name="USB-C-TH" urn="urn:adsk.eagle:package:30651119/5" type="box" library_version="63">
+<package3d name="USB-C-TH" urn="urn:adsk.eagle:package:30651119/5" type="box" library_version="90" library_locally_modified="yes">
 <packageinstances>
 <packageinstance name="USB-C-TH"/>
 </packageinstances>
@@ -1680,8 +1680,7 @@ Based on the following sources:
 </packages>
 <packages3d>
 <package3d name="TS1088R02026" urn="urn:adsk.eagle:package:18780932/2" type="model" library_version="33">
-<description>&lt;b&gt;TS-1088R-02026-1&lt;/b&gt;&lt;br&gt;
-</description>
+<description>&lt;b&gt;TS-1088R-02026-1&lt;/b&gt;&lt;br&gt;</description>
 <packageinstances>
 <packageinstance name="TS1088R02026"/>
 </packageinstances>
@@ -3752,15 +3751,7 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="-13.8938" y="42.1386" size="1.27" layer="27"/>
 </element>
 <element name="ESP32" library="LasKKit-Modules" library_urn="urn:adsk.eagle:library:21721098" package="ESP32WROOM32D" package3d_urn="urn:adsk.eagle:package:28305005/6" value="ESP32-WROOM-32D" x="-10.684" y="56.9722" smashed="yes">
-<attribute name="ARROW_PART_NUMBER" value="" x="-10.684" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="ARROW_PRICE-STOCK" value="" x="-10.684" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="DESCRIPTION" value="WiFi Modules (802.11) SMD Module, ESP32-D0WD, 32Mbits SPI flash, UART mode, PCB antenna" x="-10.684" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="HEIGHT" value="3.1mm" x="-10.684" y="52.07" size="1.778" layer="27" display="off"/>
 <attribute name="LCSC_PART" value="C82899" x="-10.684" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="MANUFACTURER_NAME" value="Espressif Systems" x="-10.684" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="MANUFACTURER_PART_NUMBER" value="ESP32-WROOM-32D" x="-10.684" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="MOUSER_PART_NUMBER" value="N/A" x="-10.684" y="52.07" size="1.778" layer="27" display="off"/>
-<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Espressif-Systems/ESP32-WROOM-32D?qs=MLItCLRbWszx2KabkKPu5A%3D%3D" x="-10.684" y="52.07" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="3.5064" y="49.5134" size="0.8128" layer="25" font="vector" ratio="15" rot="R90" align="center"/>
 <attribute name="VALUE" x="-19.484" y="56.6722" size="1.27" layer="27" rot="R90" align="center"/>
 </element>
@@ -3909,13 +3900,6 @@ design rules under a new name.</description>
 <wire x1="2" y1="3.5306" x2="0.6858" y2="3.5306" width="0.254" layer="1"/>
 <wire x1="2" y1="3.53" x2="3.5052" y2="3.53" width="0.254" layer="1"/>
 <wire x1="3.5052" y1="3.53" x2="3.5052" y2="3.556" width="0.254" layer="1"/>
-<wire x1="2" y1="-0.33" x2="3.4036" y2="-0.33" width="0.254" layer="1"/>
-<wire x1="3.4036" y1="-0.33" x2="3.4036" y2="-0.3302" width="0.254" layer="1"/>
-<wire x1="-2" y1="-0.33" x2="-3.429" y2="-0.33" width="0.254" layer="1"/>
-<wire x1="-3.429" y1="-0.33" x2="-3.429" y2="-0.3302" width="0.254" layer="1"/>
-<wire x1="-2" y1="-0.33" x2="-3.3782" y2="-0.33" width="0.254" layer="16"/>
-<wire x1="2" y1="-0.33" x2="3.4798" y2="-0.33" width="0.254" layer="16"/>
-<wire x1="3.4798" y1="-0.33" x2="3.4798" y2="-0.3302" width="0.254" layer="16"/>
 <wire x1="2" y1="3.53" x2="2" y2="4.445" width="0.254" layer="16"/>
 <wire x1="2" y1="4.445" x2="1.9812" y2="4.445" width="0.254" layer="16"/>
 <wire x1="2" y1="3.53" x2="0.5588" y2="3.53" width="0.254" layer="16"/>
@@ -3963,6 +3947,14 @@ design rules under a new name.</description>
 <via x="-1.5494" y="56.9722" extent="1-16" drill="0.3"/>
 <via x="-1.4732" y="37.6174" extent="1-16" drill="0.3"/>
 <contactref element="I2C" pad="3"/>
+<wire x1="-2" y1="-0.33" x2="-2.4316" y2="0.1016" width="0.254" layer="1"/>
+<wire x1="-2.4316" y1="0.1016" x2="-3.4036" y2="0.1016" width="0.254" layer="1"/>
+<wire x1="2" y1="-0.33" x2="2.4316" y2="0.1016" width="0.254" layer="1"/>
+<wire x1="2.4316" y1="0.1016" x2="3.3528" y2="0.1016" width="0.254" layer="1"/>
+<wire x1="2" y1="-0.33" x2="2.4316" y2="0.1016" width="0.254" layer="16"/>
+<wire x1="2.4316" y1="0.1016" x2="3.3782" y2="0.1016" width="0.254" layer="16"/>
+<wire x1="-2" y1="-0.33" x2="-2.4316" y2="0.1016" width="0.254" layer="16"/>
+<wire x1="-2.4316" y1="0.1016" x2="-3.3782" y2="0.1016" width="0.254" layer="16"/>
 </signal>
 <signal name="+3V3">
 <contactref element="R1" pad="1"/>
