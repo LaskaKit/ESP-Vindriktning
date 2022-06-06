@@ -24,10 +24,20 @@
 /* LaskaKit ESP-VINDRIKTNING s čidlem CO2/teploty/vlhkosti SCD41 */
 #include "SparkFun_SCD4x_Arduino_Library.h"
 
+/* RGB adresovatelne LED */
+#include <Adafruit_NeoPixel.h>
+
 /* LaskaKit ESP-VINDRIKTNING - cidlo prasnosti PM1006 */
 #define PIN_FAN 12 // spinani ventilatoru
 #define RXD2 16 // UART - RX
 #define TXD2 17 // UART - TX
+
+/* Nastaveni RGB LED */
+#define BRIGHTNESS 10
+#define PIN_LED 25
+#define PM_LED 0
+#define TEMP_LED 1
+#define CO2_LED 2
 
 /*--------------------- UPRAV NASTAVENI ---------------------*/
 const char* ssid = "SSID";
@@ -50,12 +60,24 @@ static PM1006 pm1006(&Serial2);
 /* LaskaKit ESP-VINDRIKTNING s čidlem CO2/teploty/vlhkosti SCD41 */
 SCD4x SCD41;
 
+/* RGB adresovatelne LED */
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(3, PIN_LED, NEO_GRB + NEO_KHZ800);
+
 void setup() {
   pinMode(PIN_FAN, OUTPUT); // Ventilator pro cidlo prasnosti PM1006
   Serial.begin(115200);
   Wire.begin();
+  
+  pixels.begin(); // WS2718
+  pixels.setBrightness(BRIGHTNESS);
 
   delay(10);
+  
+  /*-------------- RGB adresovatelne LED - zhasni --------------*/
+  pixels.setPixelColor(PM_LED, pixels.Color(0, 0, 0)); // R, G, B
+  pixels.setPixelColor(TEMP_LED, pixels.Color(0, 0, 0)); // R, G, B
+  pixels.setPixelColor(CO2_LED, pixels.Color(0, 0, 0)); // R, G, B
+  pixels.show();  // Zaktualizuje barvu
 
   /*-------------- PM1006 - cidlo prasnosti ---------------*/
   Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2); // cidlo prasnosti PM1006
@@ -92,15 +114,23 @@ void setup() {
  
 void loop() {
   /*------------- SCD41 - CO2, teplota, vlhkost -----------*/
+  int co2 = 0;
+  float teplota = 0.0;
+  int vlhkost = 0;
+ 
   while (!SCD41.readMeasurement()) // cekani na nova data (zhruba 30s)
   {
     delay(1);
   } 
 
+  co2 = SCD41.getCO2();
+  teplota = SCD41.getTemperature();
+  vlhkost = SCD41.getHumidity();
+
   // odeslani hodnot pres UART
-  Serial.print("Teplota: "); Serial.print(SCD41.getTemperature()); Serial.println(" degC");
-  Serial.print("Vlhkost: "); Serial.print(SCD41.getHumidity()); Serial.println("% rH");
-  Serial.print("CO2: "); Serial.print(SCD41.getCO2()); Serial.println(" ppm");
+  Serial.print("Teplota: "); Serial.print(teplota); Serial.println(" degC");
+  Serial.print("Vlhkost: "); Serial.print(vlhkost); Serial.println("% rH");
+  Serial.print("CO2: "); Serial.print(co2); Serial.println(" ppm");
 
   /*-------------- PM1006 - cidlo prasnosti ---------------*/
   uint16_t pm2_5;
@@ -119,12 +149,70 @@ void loop() {
 
   // odeslani hodnot pres UART
   Serial.print("PM2.5: "); Serial.print(pm2_5); Serial.println(" ppm");
+  
+  
+  /*-------------- RGB adresovatelne LED ---------------*/
+  // CO2 LED
+  if(co2 < 1000){
+    pixels.setPixelColor(CO2_LED, pixels.Color(0, 255, 0)); // R, G, B
+  }
+  
+  if((co2 >= 1000) && (co2 < 1200)){
+    pixels.setPixelColor(CO2_LED, pixels.Color(128, 255, 0)); // R, G, B
+  }
+  
+  if((co2 >= 1200) && (co2 < 1500)){
+  pixels.setPixelColor(CO2_LED, pixels.Color(255, 255, 0)); // R, G, B
+  }
+  
+  if((co2 >= 1500) && (co2 < 2000)){
+    pixels.setPixelColor(CO2_LED, pixels.Color(255, 128, 0)); // R, G, B
+  }
+  
+  if(co2 >= 2000){
+    pixels.setPixelColor(CO2_LED, pixels.Color(255, 0, 0)); // R, G, B
+  }
+
+  // teplota LED
+  if(teplota < 20.0){
+    pixels.setPixelColor(TEMP_LED, pixels.Color(0, 0, 255)); // R, G, B
+  }
+
+  if((teplota >= 20.0) && (teplota < 23.0)){
+    pixels.setPixelColor(TEMP_LED, pixels.Color(0, 255, 0)); // R, G, B
+  }
+
+  if(teplota >= 23.0){
+    pixels.setPixelColor(TEMP_LED, pixels.Color(255, 0, 0)); // R, G, B
+  }
+
+  // PM LED
+  if(pm2_5 < 30){
+    pixels.setPixelColor(PM_LED, pixels.Color(0, 255, 0)); // R, G, B
+  }
+  
+  if((pm2_5 >= 30) && (pm2_5 < 40)){
+    pixels.setPixelColor(PM_LED, pixels.Color(128, 255, 0)); // R, G, B
+  }
+  
+  if((pm2_5 >= 40) && (pm2_5 < 80)){
+  pixels.setPixelColor(PM_LED, pixels.Color(255, 255, 0)); // R, G, B
+  }
+  
+  if((pm2_5 >= 80) && (pm2_5 < 90)){
+    pixels.setPixelColor(PM_LED, pixels.Color(255, 128, 0)); // R, G, B
+  }
+  
+  if(pm2_5 >= 90){
+    pixels.setPixelColor(PM_LED, pixels.Color(255, 0, 0)); // R, G, B
+  }
+  pixels.show();  // Zaktualizuje barvu
 
   /*------------ Odeslani hodnot na TMEP.cz ------------------*/
   if(WiFi.status()== WL_CONNECTED)
   {
     //GUID, nasleduje hodnota teploty, pro vlhkost "humV", pro CO2 "CO2" cidla SCD41
-    String serverPathCO2 = serverNameCO2 + "" + GUID_CO2 + "=" + SCD41.getTemperature() + "&humV=" + SCD41.getHumidity() + "&CO2=" + SCD41.getCO2(); 
+    String serverPathCO2 = serverNameCO2 + "" + GUID_CO2 + "=" + teplota + "&humV=" + vlhkost + "&CO2=" + co2; 
     sendhttpGet(serverPathCO2);
 
     delay(100);

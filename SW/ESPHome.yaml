@@ -1,0 +1,201 @@
+substitutions:
+  device_name: air-quality
+  wifi_ssid: !secret wifi_ssid
+  wifi_password: !secret wifi_password
+  api_password: !secret api_password
+  ota_password: !secret ota_password
+
+esphome:
+  name: ${device_name}
+  comment: IKEA LaskaKit ESP-VINDRIKTNING ESP-32 I2C
+
+esp32:
+  board: nodemcu-32s
+  framework:
+    type: arduino
+
+wifi:
+  ssid: ${wifi_ssid}
+  password: ${wifi_password}
+api:
+  password: ${api_password}
+ota:
+  password: ${ota_password}
+
+logger:
+
+uart:
+  rx_pin: 16
+  tx_pin: 17
+  baud_rate: 9600
+  id: uart2
+
+sensor:
+  - platform: pm1006
+    pm_2_5:
+      name: "Particulate Matter 2.5µm Concentration"
+      id: pm
+      accuracy_decimals: 1
+      on_value:
+        then:
+        - if:
+            condition:
+              lambda: 'return x < 30;'
+            then:
+              - light.addressable_set:
+                  id: status
+                  range_from: 0
+                  range_to: 0
+                  red: 0.0
+                  green: 1.0
+                  blue: 0.0
+                  color_brightness:  !lambda |-
+                    return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+            else:
+            - if:
+                condition:
+                  lambda: 'return x > 90;'
+                then:
+                - light.addressable_set:
+                    id: status
+                    range_from: 0
+                    range_to: 0
+                    red: 1.0
+                    green: 0.0
+                    blue: 0.0
+                    color_brightness:  !lambda |-
+                      return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+                else:
+                - light.addressable_set:
+                    id: status
+                    range_from: 0
+                    range_to: 0
+                    red: 1.0
+                    green: 0.72
+                    blue: 0.0
+                    color_brightness:  !lambda |-
+                      return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+    uart_id: uart2
+    update_interval: 20s
+  - platform: scd4x
+    co2:
+      name: "CO2"
+      id: co2
+      on_value:
+        then:
+        - if:
+            condition:
+              lambda: 'return x < 1000;'
+            then:
+              - light.addressable_set:
+                  id: status
+                  range_from: 1
+                  range_to: 1
+                  red: 0.0
+                  green: 1.0
+                  blue: 0.0
+                  color_brightness:  !lambda |-
+                    return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+            else:
+            - if:
+                condition:
+                  lambda: 'return x > 1500;'
+                then:
+                - light.addressable_set:
+                    id: status
+                    range_from: 1
+                    range_to: 1
+                    red: 1.0
+                    green: 0.0
+                    blue: 0.0
+                    color_brightness:  !lambda |-
+                      return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+                else:
+                - light.addressable_set:
+                    id: status
+                    range_from: 1
+                    range_to: 1
+                    red: 1.0
+                    green: 0.72
+                    blue: 0.0
+                    color_brightness:  !lambda |-
+                      return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+    humidity:
+      name: "Humidity"    
+      id: humidity
+      on_value:
+        then:
+        - if:
+            condition:
+              lambda: 'return x < 30;'
+            then:
+              - light.addressable_set:
+                  id: status
+                  range_from: 2
+                  range_to: 2
+                  red: 1.0
+                  green: 0.0
+                  blue: 0.0
+                  color_brightness:  !lambda |-
+                    return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+            else:
+            - if:
+                condition:
+                  lambda: 'return x > 60;'
+                then:
+                - light.addressable_set:
+                    id: status
+                    range_from: 2
+                    range_to: 2
+                    red: 0.0
+                    green: 0.0
+                    blue: 1.0
+                    color_brightness:  !lambda |-
+                      return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+                else:
+                - light.addressable_set:
+                    id: status
+                    range_from: 2
+                    range_to: 2
+                    red: 0.0
+                    green: 1.0
+                    blue: 0.0
+                    color_brightness:  !lambda |-
+                      return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+  - platform: homeassistant
+    id: sun_elevation
+    entity_id: sun.sun
+    attribute: elevation
+  - platform: wifi_signal
+    name: "Air quality WiFi Signal Sensor"
+    entity_category: diagnostic
+    disabled_by_default: true
+    update_interval: 60s
+
+switch:
+  - platform: gpio
+    pin: 12
+    id: fan
+    restore_mode: ALWAYS_ON
+    disabled_by_default: true
+    entity_category: diagnostic
+  
+light:
+  - platform: neopixelbus
+    type: GRB
+    variant: WS2812
+    pin: GPIO25
+    num_leds: 3
+    id: status
+
+i2c:
+  sda: 21
+  scl: 22
+  scan: true
+  id: bus_a
+
+button:
+  - platform: restart
+    name: "Restart ${device_name}"
+    disabled_by_default: true
+    entity_category: diagnostic
