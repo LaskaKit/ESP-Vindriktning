@@ -4,10 +4,24 @@ substitutions:
   wifi_password: !secret wifi_password
   api_password: !secret api_password
   ota_password: !secret ota_password
+  
+globals:
+   - id: max_brightness
+     type: float
+     restore_value: no
+     initial_value: '0.5'
+   - id: min_brightness
+     type: float
+     restore_value: no
+     initial_value: '0.1'
 
 esphome:
   name: ${device_name}
   comment: IKEA LaskaKit ESP-VINDRIKTNING ESP-32 I2C
+  on_boot:
+      - light.turn_on:
+          id: status
+          brightness: 0%
 
 esp32:
   board: nodemcu-32s
@@ -50,7 +64,7 @@ sensor:
                   green: 1.0
                   blue: 0.0
                   color_brightness:  !lambda |-
-                    return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+                    return id(sun_elevation).state > 0 ? id(max_brightness) : id(min_brightness);
             else:
             - if:
                 condition:
@@ -64,7 +78,7 @@ sensor:
                     green: 0.0
                     blue: 0.0
                     color_brightness:  !lambda |-
-                      return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+                      return id(sun_elevation).state > 0 ? id(max_brightness) : id(min_brightness);
                 else:
                 - light.addressable_set:
                     id: status
@@ -74,7 +88,7 @@ sensor:
                     green: 0.72
                     blue: 0.0
                     color_brightness:  !lambda |-
-                      return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+                      return id(sun_elevation).state > 0 ? id(max_brightness) : id(min_brightness);
     uart_id: uart2
     update_interval: 20s
   - platform: scd4x
@@ -95,7 +109,7 @@ sensor:
                   green: 1.0
                   blue: 0.0
                   color_brightness:  !lambda |-
-                    return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+                    return id(sun_elevation).state > 0 ? id(max_brightness) : id(min_brightness);
             else:
             - if:
                 condition:
@@ -109,7 +123,7 @@ sensor:
                     green: 0.0
                     blue: 0.0
                     color_brightness:  !lambda |-
-                      return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+                      return id(sun_elevation).state > 0 ? id(max_brightness) : id(min_brightness);
                 else:
                 - light.addressable_set:
                     id: status
@@ -119,7 +133,7 @@ sensor:
                     green: 0.72
                     blue: 0.0
                     color_brightness:  !lambda |-
-                      return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+                      return id(sun_elevation).state > 0 ? id(max_brightness) : id(min_brightness);
     humidity:
       name: "Humidity"    
       id: humidity
@@ -137,7 +151,7 @@ sensor:
                   green: 0.0
                   blue: 0.0
                   color_brightness:  !lambda |-
-                    return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+                    return id(sun_elevation).state > 0 ? id(max_brightness) : id(min_brightness);
             else:
             - if:
                 condition:
@@ -151,7 +165,7 @@ sensor:
                     green: 0.0
                     blue: 1.0
                     color_brightness:  !lambda |-
-                      return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+                      return id(sun_elevation).state > 0 ? id(max_brightness) : id(min_brightness);
                 else:
                 - light.addressable_set:
                     id: status
@@ -161,7 +175,7 @@ sensor:
                     green: 1.0
                     blue: 0.0
                     color_brightness:  !lambda |-
-                      return id(sun_elevation).state > 0 ? 1.0 : 0.5;
+                      return id(sun_elevation).state > 0 ? id(max_brightness) : id(min_brightness);
   - platform: homeassistant
     id: sun_elevation
     entity_id: sun.sun
@@ -187,6 +201,10 @@ light:
     pin: GPIO25
     num_leds: 3
     id: status
+    restore_mode: ALWAYS_ON
+    method:
+      type: esp32_rmt
+      channel: 6
 
 i2c:
   sda: 21
