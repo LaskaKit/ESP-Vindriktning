@@ -3,12 +3,12 @@
 
 Ikea Vindriktning je zajímavý a levný produkt firmy Ikea, který dokáže měřit kvalitu vzduchu - prašnost ve vzduchu. A to je všechno.
 
-Rozhodli jsme se vytvořit vlastní desku kterou jenom vyměníš - ošroubovat a přišroubovat 7 šroubků. 
-Naše deska LASKAKIT ESP-VINDRIKTNING má konektory na stejném místě jako originální deska, ale navíc obsahuje výkonný a populární čip ESP32, který kromě komunikaci s čidlem prachu 
+Rozhodli jsme se vytvořit vlastní desku kterou jenom vyměníš - stačí odšroubovat a přišroubovat 7 šroubků. 
+Naše deska LASKAKIT ESP-VINDRIKTNING má konektory na stejném místě jako originální deska, ale navíc obsahuje výkonný a populární čip ESP32, který kromě komunikace s čidlem prachu 
 disponuje i možností připojení přes Wi-Fi a Bluetooth. Volitelně můžeš dokoupit i další čidla - SHT40 pro měření teploty a vlhkost nebo SCD41 pro měření CO2/teploty/vlhkosti. 
 
 ## Programování
-LASKAKIT ESP-VINDRIKTNING stejně jako originální Ikea Vindriktning obsahuje USB-C konektor. U originální desky slouží pouze k napájení, u naší je kromě napájení použit i pro programování.
+LASKAKIT ESP-VINDRIKTNING stejně jako originální Ikea Vindriktning obsahuje USB-C konektor. U originální desky slouží pouze k napájení, u naší desky je kromě napájení možné ho použít i pro programování.
 Stačí jí tedy připojit do USB konektoru a otevřít třeba Arduino IDE. 
 
 ## Konektory
