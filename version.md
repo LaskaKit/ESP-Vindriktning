@@ -1,5 +1,5 @@
 ### Version 3.0
--Přidán pasivní piezo bzučák - pin GPIO15
+-Přidán pasivní piezo bzučák - pin GPIO2
 -Přidán přijímač IR dálkového ovládání - pin GPIO26
 -Přidána propojka pro přepnutí ventilátoru PM senzoru na 3,3V
 -Změna konstrukce převodníku úrovní pro PM senzor
