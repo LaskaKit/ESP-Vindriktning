@@ -12,7 +12,7 @@ LASKAKIT ESP-VINDRIKTNING stejně jako originální Ikea Vindriktning obsahuje U
 Stačí jí tedy připojit do USB konektoru a otevřít třeba Arduino IDE. 
 
 ## Konektory
-LASKAKIT ESP-VINDRIKTNING obsahuje celkem šest konektorů. První dva slouží k připojení originální čidla - čidla prašnosti (čidlo a ventilátor). Třetí [konektor je uŠup](https://blog.laskarduino.cz/predstavujeme-univerzalni-konektor-pro-propojeni-modulu-a-cidel-%ce%bcsup/),
+LASKAKIT ESP-VINDRIKTNING obsahuje celkem šest konektorů. První dva slouží k připojení originální čidla - čidla prašnosti (čidlo a ventilátor). Třetí [konektor je μŠup](https://blog.laskarduino.cz/predstavujeme-univerzalni-konektor-pro-propojeni-modulu-a-cidel-%ce%bcsup/),
 který je kompatibilní s STEMMA QT a Qwiic JST-SH
 Díky tomuto konektoru můžeš přidat čidlo [tepoty/vlhkosti SHT40](https://www.laskakit.cz/laskakit-sht40-senzor-teploty-a-vlhkosti-vzduchu/) nebo [SCD41 (čidlo CO2/teploty/vlhkosti)](https://www.laskakit.cz/laskakit-scd41-senzor-co2--teploty-a-vlhkosti-vzduchu/) 
 a vytvořit tak komplexní měření kvality vzduchu.
