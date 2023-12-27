@@ -32,6 +32,9 @@ String hlavni = "http://HLAVNI_DOMENA.tmep.cz/index.php?";
 //                                     druha adresa - prasnost
 String sekundarni = "http://SEKUNDARNI-DOMENA.tmep.cz/index.php?";
 
+// Interval mereni (zadavano v milisekundach)
+#define SLEEP_SEC 300000
+
 // zapnout seriovy port (UART)
 #define uart
 
@@ -134,8 +137,6 @@ const unsigned char laskakit [] PROGMEM = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
 #endif
-
-#define SLEEP_SEC 5*60
 
 /* LaskaKit ESP-VINDRIKTNING - cidlo prasnosti PM1006, nastaveni UART2 */
 static PM1006 pm1006(&Serial2);
@@ -281,17 +282,7 @@ void loop() {
   uint16_t pm2_5;
   digitalWrite(PIN_FAN, HIGH);
   Serial.println("Fan ON");
-  delay(2000); // vratit na 30s!
-
-/*
-  Serial.println("cekam na prach... pocitam do dvaceti");
-
-  for (int pomocna = 0; !pm1006.read_pm25(&pm2_5) || pomocna < 1000; pomocna++){
-    Serial.println(pomocna);
-    delay(1);
-  }
-
-*/
+  delay(30000);
 
   if (pm1006.read_pm25(&pm2_5)){
     Serial.println("Mam data z cidla");
@@ -429,9 +420,8 @@ void loop() {
   #ifdef sht40
   if(WiFi.status()== WL_CONNECTED)
   {
-    int pmOdeslat = pm2_5;
-    //Hodnota teploty, pro vlhkost "humV", pro CO2 "CO2" cidla SCD41
-    String serverPathCO2 = hlavni + "" + "temp=" + teplota + "&humV=" + vlhkost + "&pm=" + pmOdeslat; 
+    //GUID, nasleduje hodnota teploty, pro vlhkost "humV", pro CO2 "CO2" cidla SCD41
+    String serverPathCO2 = hlavni + "" + "temp" + "=" + teplota + "&humV=" + vlhkost + "&pm=" + pm2_5; 
     sendhttpGet(serverPathCO2);
 
   }
@@ -443,16 +433,14 @@ void loop() {
   #ifdef scd41
   if(WiFi.status()== WL_CONNECTED)
   {
-    //Hodnota teploty, pro vlhkost "humV", pro CO2 "CO2" cidla SCD41
+    //GUID, nasleduje hodnota teploty, pro vlhkost "humV", pro CO2 "CO2" cidla SCD41
     String serverPathCO2 = sekundarni + "" + "temp=" + teplota + "&humV=" + vlhkost + "&CO2=" + co2; 
-    Serial.println(serverPathCO2);
     sendhttpGet(serverPathCO2);
 
     delay(100);
     int pmOdeslat = pm2_5;
-    //Hodnota cidla prasnosti PM1006 a odeslani na druhou domenu
+    //GUID, nasleduje hodnota cidla prasnosti PM1006 a odeslani na druhou domenu
     String serverPathPM = hlavni + "" + "pm=" + pmOdeslat; 
-    Serial.println(serverPathPM);
     sendhttpGet(serverPathPM);
 
   }
@@ -463,11 +451,8 @@ void loop() {
   #endif
   #endif
 
-  esp_sleep_enable_timer_wakeup(900 * 1000000); // uspani na 15 minut
-  Serial2.flush();
-  Serial.flush(); 
   delay(100);
-  esp_deep_sleep_start();
+  delay(SLEEP_SEC);
 }
 
 // funcke pro odeslani dat na TMEP.cz
