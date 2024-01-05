@@ -2,243 +2,131 @@
 
 #include "pm1006.h"
 #include <Adafruit_NeoPixel.h>
-#include <SensirionI2CScd4x.h>
 #include <Wire.h>
 
+// Pin assignment
 #define PIN_FAN 12
 #define PIN_LED 25
+#define PIN_AMBIENT_LIGHT 4
 #define RXD2 16
 #define TXD2 17
 
-#define BRIGHTNESS 50
-#define BR_NIGHT 5
+// Brightness control
+#define BRIGHTNESS_DAY 50   // Day brightness
+#define BRIGHTNESS_NIGHT 5  // Night brightness
+#define DAY_MIN_AL 3700     // Minimum ambient light for day
 
-#define PM_LED 1
-#define TEMP_LED 2
-#define CO2_LED 3
-
-#define PIN_AMBIENT_LIGHT 4
-#define DN 3700 // night level
-
-#define TEMP_OFFSET 3.02
-
+// PM 2.5 sensor
 static PM1006 pm1006(&Serial2);
+
+// RGB LEDs
 Adafruit_NeoPixel rgbWS = Adafruit_NeoPixel(3, PIN_LED, NEO_GRB + NEO_KHZ800);
-SensirionI2CScd4x scd4x;
 
 void setup() {
-  pinMode(PIN_FAN, OUTPUT); // Fan
-  pinMode(PIN_AMBIENT_LIGHT, INPUT); // Ambient light
-  
-  rgbWS.begin(); // WS2718
-  rgbWS.setBrightness(BRIGHTNESS);
-  
+  // Enable serial communication
   Serial.begin(115200);
   Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2);
-
-  Wire.begin();
-  uint16_t error;
-  char errorMessage[256];
-  scd4x.begin(Wire);
-  
-  Serial.println("Start...");
   delay(500);
-  Serial.println("1. LED Green");
-  setColorWS(0, 255, 0, PM_LED);
-  delay(1000);
+  Serial.println("Start...");
+
+  // Setup pins
+  pinMode(PIN_FAN, OUTPUT);           // Fan
+  pinMode(PIN_AMBIENT_LIGHT, INPUT);  // Ambient light
+
+  // Setup WS2718 LEDs
+  rgbWS.begin();
+  rgbWS.setBrightness(BRIGHTNESS_DAY);
+
+  Serial.println("1. LED Red");
+  setColorWS(255, 0, 0, 1);
   Serial.println("2. LED Green");
   setColorWS(0, 255, 0, 2);
-  delay(1000);
-  Serial.println("3. LED Green");
-  setColorWS(0, 255, 0, 3);
-  delay(1000);
+  Serial.println("3. LED Blue");
+  setColorWS(0, 0, 255, 3);
+  delay(5000);
+
   setColorWS(0, 0, 0, 1);
   setColorWS(0, 0, 0, 2);
   setColorWS(0, 0, 0, 3);
-
-  // stop potentially previously started measurement
-  error = scd4x.stopPeriodicMeasurement();
-  if (error) {
-      Serial.print("SCD41 Error trying to execute stopPeriodicMeasurement(): ");
-      errorToString(error, errorMessage, 256);
-      Serial.println(errorMessage);
-      alert(CO2_LED);
-  }
-
-  uint16_t serial0;
-  uint16_t serial1;
-  uint16_t serial2;
-  error = scd4x.getSerialNumber(serial0, serial1, serial2);
-  if (error) {
-      Serial.print("SCD41 Error trying to execute getSerialNumber(): ");
-      errorToString(error, errorMessage, 256);
-      Serial.println(errorMessage);
-      alert(CO2_LED);
-  } else {
-      printSerialNumber(serial0, serial1, serial2);
-  }
-
-  // Start Measurement
-  error = scd4x.startPeriodicMeasurement();
-  if (error) {
-      Serial.print("SCD41 Error trying to execute startPeriodicMeasurement(): ");
-      errorToString(error, errorMessage, 256);
-      Serial.println(errorMessage);
-      alert(CO2_LED);
-  }
-
-  Serial.println("Waiting for first measurement... (5 sec)");
 }
 
 void loop() {
-  uint16_t error;
-  char errorMessage[256];
-
+  // Read ambient light and set LED brightness
   int al = analogRead(PIN_AMBIENT_LIGHT);
-
-  if (al >= DN){
-    rgbWS.setBrightness(BR_NIGHT);
-  }else{
-    rgbWS.setBrightness(BRIGHTNESS);
-  }
-  
   Serial.print("Ambient light: ");
   Serial.println(al);
-  
+  if (al >= DAY_MIN_AL) {
+    rgbWS.setBrightness(BRIGHTNESS_NIGHT);
+  } else {
+    rgbWS.setBrightness(BRIGHTNESS_DAY);
+  }
+
+  // Turn fan ON
   digitalWrite(PIN_FAN, HIGH);
   Serial.println("Fan ON");
   delay(10000);
 
+  // Read dust particles
   uint16_t pm2_5;
   if (pm1006.read_pm25(&pm2_5)) {
     printf("PM2.5 = %u\n", pm2_5);
   } else {
     Serial.println("Measurement failed!");
-    alert(PM_LED);
+    alert(2);
   }
 
+  // Turn fan off
   delay(1000);
   digitalWrite(PIN_FAN, LOW);
   Serial.println("Fan OFF");
-  
-  uint16_t co2;
-  float temperature;
-  float humidity;
-  error = scd4x.readMeasurement(co2, temperature, humidity);
-  if (error) {
-    Serial.print("SCD41 Error trying to execute readMeasurement(): ");
-    errorToString(error, errorMessage, 256);
-    Serial.println(errorMessage);
-    alert(CO2_LED);
-  } else if (co2 == 0) {
-    Serial.println("Invalid sample detected, skipping.");
+
+  // Set LEDs to indicate status
+  if (pm2_5 < 30) {
+    setColorWS(0, 255, 0, 1);
+    setColorWS(0, 255, 0, 2);
+    setColorWS(0, 255, 0, 3);
+  } else if (pm2_5 < 40) {
+    setColorWS(128, 255, 0, 1);
+    setColorWS(128, 255, 0, 2);
+    setColorWS(128, 255, 0, 3);
+  } else if (pm2_5 < 80) {
+    setColorWS(255, 255, 0, 1);
+    setColorWS(255, 255, 0, 2);
+    setColorWS(255, 255, 0, 3);
+  } else if (pm2_5 < 90) {
+    setColorWS(255, 128, 0, 1);
+    setColorWS(255, 128, 0, 2);
+    setColorWS(255, 128, 0, 3);
   } else {
-    temperature = temperature - TEMP_OFFSET;
-    
-    Serial.print("Co2:");
-    Serial.print(co2);
-    Serial.print("\t");
-    Serial.print(" Temperature:");
-    Serial.print(temperature);
-    Serial.print("\t");
-    Serial.print(" Humidity:");
-    Serial.println(humidity);
-
-    // CO2 LED
-    if(co2 < 1000){
-      setColorWS(0, 255, 0, CO2_LED);
-    }
-    
-    if((co2 >= 1000) && (co2 < 1200)){
-      setColorWS(128, 255, 0, CO2_LED);
-    }
-    
-    if((co2 >= 1200) && (co2 < 1500)){
-    setColorWS(255, 255, 0, CO2_LED);
-    }
-    
-    if((co2 >= 1500) && (co2 < 2000)){
-      setColorWS(255, 128, 0, CO2_LED);
-    }
-    
-    if(co2 >= 2000){
-      setColorWS(255, 0, 0, CO2_LED);
-    }
-
-    // Temperature LED
-    if(temperature < 23.0){
-      setColorWS(0, 0, 255, TEMP_LED);
-    }
-
-    if((temperature >= 23.0) && (temperature < 27.0)){
-      setColorWS(0, 255, 0, TEMP_LED);
-    }
-
-    if(temperature >= 27.0){
-      setColorWS(255, 0, 0, TEMP_LED);
-    }
+    setColorWS(255, 0, 0, 1);
+    setColorWS(255, 0, 0, 2);
+    setColorWS(255, 0, 0, 3);
   }
 
-  // PM LED
-  if(pm2_5 < 30){
-    setColorWS(0, 255, 0, PM_LED);
-  }
-  
-  if((pm2_5 >= 30) && (pm2_5 < 40)){
-    setColorWS(128, 255, 0, PM_LED);
-  }
-  
-  if((pm2_5 >= 40) && (pm2_5 < 80)){
-  setColorWS(255, 255, 0, PM_LED);
-  }
-  
-  if((pm2_5 >= 80) && (pm2_5 < 90)){
-    setColorWS(255, 128, 0, PM_LED);
-  }
-  
-  if(pm2_5 >= 90){
-    setColorWS(255, 0, 0, PM_LED);
-  }
-
+  // Wait for 30 seconds
   delay(30000);
 }
 
-void alert(int id){
+void alert(int id) {
   int i = 0;
-  while (1){
-     if (i > 10){
+  while (1) {
+    if (i > 10) {
       Serial.println("Maybe need Reboot...");
       //ESP.restart();
       break;
-     }
-     rgbWS.setBrightness(255);
-     setColorWS(255, 0, 0, id); 
-     delay(200);
-     rgbWS.setBrightness(BRIGHTNESS);
-     setColorWS(0, 0, 0, id);
-     delay(200);
-     i++;
+    }
+    rgbWS.setBrightness(255);
+    setColorWS(255, 0, 0, id);
+    delay(200);
+    setColorWS(0, 0, 0, id);
+    delay(200);
+    i++;
   }
 }
 
-void setColorWS(byte r, byte g, byte b, int id) {  // r = hodnota cervene, g = hodnota zelene, b = hodnota modre, id = cislo LED v poradi, kterou budeme nastavovat(1 = 1. LED, 2 = 2. LED atd.)
-  uint32_t rgb;  
-  rgb = rgbWS.Color(r, g, b); // Konverze vstupnich hodnot R, G, B do pomocne promenne  
-  rgbWS.setPixelColor(id - 1, rgb); // Nastavi pozadovanou barvu pro konkretni led = pozice LED zacinaji od nuly
-  rgbWS.show();  // Zaktualizuje barvu
-}
-
-void printUint16Hex(uint16_t value) {
-    Serial.print(value < 4096 ? "0" : "");
-    Serial.print(value < 256 ? "0" : "");
-    Serial.print(value < 16 ? "0" : "");
-    Serial.print(value, HEX);
-}
-
-void printSerialNumber(uint16_t serial0, uint16_t serial1, uint16_t serial2) {
-    Serial.print("SCD41 Serial: 0x");
-    printUint16Hex(serial0);
-    printUint16Hex(serial1);
-    printUint16Hex(serial2);
-    Serial.println();
+void setColorWS(byte r, byte g, byte b, int id) {
+  uint32_t rgb;
+  rgb = rgbWS.Color(r, g, b);        // Convert R, G, B components to color structure
+  rgbWS.setPixelColor(id - 1, rgb);  // Set color for a given LED
+  rgbWS.show();                      // Update color
 }
