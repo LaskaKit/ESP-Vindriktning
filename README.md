@@ -19,6 +19,7 @@ The number of LEDs is the same with original board. The LEDs are RGB and address
 
 ## Example codes 
 For the fastest development, we prepared a few examples where we show how to easily use LASKAKIT ESP-VINDRIKTNING alone or with SCD41
+Use "nodemcu-32s" board in ESPHome and "ESP32 Dev Module" in Arduino IDE.
 
 ## Link
 The product is available on our store https://www.laskakit.cz/laskakit-esp-vindriktning-esp-32-i2c/

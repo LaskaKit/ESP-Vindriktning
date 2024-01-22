@@ -26,6 +26,7 @@ takže první LED může indikovat koncentraci CO2, druhá teplotu, třetí pra�
 ## Vzorové kódy 
 Pro rychlejší start s LASKAKIT ESP-VINDRIKTNING jsme napsali několik vzorových kódů, které můžeš jednoduše upravit pro vlastní potřeby.
 Zároveň jsme rozsáhlý článek i na náš blog - https://blog.laskarduino.cz/senzor-prachovych-castic-ikea-vindriktning-vylepseny-o-cidlo-co2-teploty-vlhkosti-bluetooth-wi-fi-komunikaci-a-s-vizualizaci-dat-na-tmep-cz/
+Použij desku "nodemcu-32s" v ESPHome a "ESP32 Dev Module" v Arduino IDE.
 
 ## Odkaz
 Deska je dostupná na našem e-shopu https://www.laskakit.cz/laskakit-esp-vindriktning-esp-32-i2c/
