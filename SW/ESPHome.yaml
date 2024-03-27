@@ -42,7 +42,7 @@ uart:
   rx_pin: 16
   tx_pin: 17
   baud_rate: 9600
-  id: uart2
+  id: uart_2
 
 sensor:
   - platform: pm1006
@@ -89,7 +89,7 @@ sensor:
                     blue: 0.0
                     color_brightness:  !lambda |-
                       return id(sun_elevation).state > 0 ? id(max_brightness) : id(min_brightness);
-    uart_id: uart2
+    uart_id: uart_2
     update_interval: 20s
   - platform: scd4x
     co2:
